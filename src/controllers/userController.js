@@ -1,15 +1,12 @@
 const UserModel= require("../models/userModel")
 
-const createUser= async function (req, res) {
-    let data= req.body
-    let savedData= await UserModel.create(data)
-    res.send({msg: savedData})
+
+
+const middleware = async function(req, res){
+    const date = new Date()
+    console.log("Current Date is: "+ date+ " #______IP address is: "+req.ip+" #______Requested URL is: "+req.url)
+    res.send({msg: "Data has been successfully printed on console."})
 }
 
-const getUsersData= async function (req, res) {
-    let allUsers= await UserModel.find()
-    res.send({msg: allUsers})
-}
 
-module.exports.createUser= createUser
-module.exports.getUsersData= getUsersData
+module.exports.middleware= middleware
